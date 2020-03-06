@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5D436F0C-3395-49BB-9984-862A61A0821E}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>StudentManager.Presentation.ConsoleApp</RootNamespace>
+    <AssemblyName>StudentManager.Presentation.ConsoleApp</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\StudentManager.Common\StudentManager.Common.csproj">
+      <Project>{5b20a3e7-52e5-4fd3-9cfa-89fe521e6298}</Project>
+      <Name>StudentManager.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\StudentManager.DataAccess.Dapper\StudentManager.DataAccess.Dapper.csproj">
+      <Project>{ce2c50a6-1886-4150-a93a-82f07bfcf6fe}</Project>
+      <Name>StudentManager.DataAccess.Dapper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\StudentManager.DataAccess.EFCodeFirst\StudentManager.DataAccess.EFCodeFirst.csproj">
+      <Project>{f8347874-6cc4-49db-927b-7ee55a0bc57f}</Project>
+      <Name>StudentManager.DataAccess.EFCodeFirst</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\StudentManager.DataAccess.EFModelFirst\StudentManager.DataAccess.EFModelFirst.csproj">
+      <Project>{fcee1c61-cdb5-41b9-bf37-0270185a77b7}</Project>
+      <Name>StudentManager.DataAccess.EFModelFirst</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\StudentManager.DataAccess.SQL\StudentManager.DataAccess.SQL.csproj">
+      <Project>{5cf7640d-711c-43e3-84f8-a416e2dd305f}</Project>
+      <Name>StudentManager.DataAccess.SQL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\StudentManager.DataAccess.StoredProcedures\StudentManager.DataAccess.StoredProcedures.csproj">
+      <Project>{38387eb2-63bb-4b33-9d35-8e439b68a8b9}</Project>
+      <Name>StudentManager.DataAccess.StoredProcedures</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
