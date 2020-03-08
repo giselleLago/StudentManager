@@ -53,7 +53,7 @@ namespace StudentManager.DataAccess.StoredProcedures.Repositories
             {
                 string procedure = @"dbo.[UpdateStudent]";
                 SqlCommand command = new SqlCommand(procedure, connection);
-                command.Parameters.AddWithValue("@student_id", entity.StudentId);
+                command.Parameters.AddWithValue("@student_id", entity.Id);
                 command.Parameters.AddWithValue("@student_name", entity.Name);
                 command.Parameters.AddWithValue("@student_surname", entity.LastName);
                 command.Parameters.AddWithValue("@student_birth_date", entity.BirthDate);

@@ -66,7 +66,7 @@ namespace StudentManager.DataAccess.StoredProcedures.Tests
             Student studentToAdd = new Student(2, "Updated", "Student", DateTime.Parse("10/10/2010"));
             repository.Update(studentToAdd);
             var studentsList = repository.GetAll().ToList();
-            var updatedStudent = studentsList.Find(x => x.StudentId == 2);
+            var updatedStudent = studentsList.Find(x => x.Id == 2);
             Assert.IsTrue(updatedStudent.Name == "Updated");
         }
 
@@ -76,8 +76,8 @@ namespace StudentManager.DataAccess.StoredProcedures.Tests
             StudentRepository repository = new StudentRepository();
             repository.DeleteById(5);
             var studentsList = repository.GetAll().ToList();
-            var updatedStudent = studentsList.Find(x => x.StudentId == 2);
-            Assert.IsNull(studentsList.Find(x=>x.StudentId==5));
+            var updatedStudent = studentsList.Find(x => x.Id == 2);
+            Assert.IsNull(studentsList.Find(x=>x.Id==5));
         }
 
         [TestMethod()]
