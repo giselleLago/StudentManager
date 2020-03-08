@@ -36,6 +36,7 @@ namespace StudentManager.DataAccess.StoredProcedures.Repositories
                 command.Parameters.AddWithValue("@student_name", entity.Name);
                 command.Parameters.AddWithValue("@student_surname", entity.LastName);
                 command.Parameters.AddWithValue("@student_birth_date", entity.BirthDate);
+                command.Parameters.AddWithValue("@student_guid", entity.Guid);
                 command.CommandType = CommandType.StoredProcedure;
 
                 connection.Open();
@@ -53,7 +54,7 @@ namespace StudentManager.DataAccess.StoredProcedures.Repositories
             {
                 string procedure = @"dbo.[UpdateStudent]";
                 SqlCommand command = new SqlCommand(procedure, connection);
-                command.Parameters.AddWithValue("@student_id", entity.StudentId);
+                command.Parameters.AddWithValue("@id", entity.Id);
                 command.Parameters.AddWithValue("@student_name", entity.Name);
                 command.Parameters.AddWithValue("@student_surname", entity.LastName);
                 command.Parameters.AddWithValue("@student_birth_date", entity.BirthDate);
@@ -74,7 +75,7 @@ namespace StudentManager.DataAccess.StoredProcedures.Repositories
             {
                 string procedure = @"dbo.[DeleteStudent]";
                 SqlCommand command = new SqlCommand(procedure, connection);
-                command.Parameters.AddWithValue("@student_id", id);
+                command.Parameters.AddWithValue("@id", id);
                 command.CommandType = CommandType.StoredProcedure;
 
                 connection.Open();
@@ -106,12 +107,14 @@ namespace StudentManager.DataAccess.StoredProcedures.Repositories
             var studentsList = new List<Student>();
             while (reader.Read())
             {
-                var student = new Student(
-                reader.GetInt32(0),
-                reader.GetString(1),
-                reader.GetString(2),
-                reader.GetDateTime(3)
-                );
+                var student = new Student
+                {
+                    Id = reader.GetInt32(0),
+                    Name = reader.GetString(1),
+                    LastName = reader.GetString(2),
+                    BirthDate = reader.GetDateTime(3),
+                    Guid = reader.GetGuid(4)
+                };
                 studentsList.Add(student);
             }
             return studentsList;
