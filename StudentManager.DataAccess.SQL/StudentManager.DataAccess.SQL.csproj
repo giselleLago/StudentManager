@@ -42,7 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\StudentRepository.cs" />
+    <Compile Include="Repositories\SqlStudentRepository.cs" />
     <Content Include="Scripts\Initialize.sql" />
   </ItemGroup>
   <ItemGroup>

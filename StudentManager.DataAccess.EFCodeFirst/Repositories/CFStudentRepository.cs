@@ -2,9 +2,9 @@
 using System;
 using System.Collections.Generic;
 
-namespace StudentManager.DataAccess.Dapper.Repositories
+namespace StudentManager.DataAccess.EFCodeFirst.Repositories
 {
-    public class StudentRepository : IStudentRepository
+    public class CFStudentRepository : IStudentRepository
     {
         public IEnumerable<Student> GetAll()
         {
