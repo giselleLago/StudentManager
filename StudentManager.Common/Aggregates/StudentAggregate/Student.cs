@@ -11,6 +11,10 @@ namespace StudentManager.Common.Aggregates.StudentAggregate
         public DateTime BirthDate { get; set; }
         public Guid Guid { get; set; }
 
+        public Student()
+        {
+        }
+
         public Student(int studentId, string name, string lastName, DateTime birthDate, Guid guid)
         {
             StudentId = studentId;
