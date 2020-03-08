@@ -15,13 +15,13 @@ namespace StudentManager.DataAccess.StoredProcedures.Tests
         public static void TestFixtureSetup(TestContext context)
         {
             string connectionString = "Server=.;Database=StudentManager;User Id=sa;Password=yourStrong(!)Password;";
-            StudentRepository repository = new StudentRepository();
+            StoredProceduresStudentRepository repository = new StoredProceduresStudentRepository();
         }
 
         [TestInitialize]
         public void Setup()
         {
-            StudentRepository repository = new StudentRepository();
+            StoredProceduresStudentRepository repository = new StoredProceduresStudentRepository();
             Student student1 = new Student { Id = 1, Name = "Albert", LastName = "Riera", BirthDate = DateTime.Parse("10/10/2010"), Guid = Guid.NewGuid() };
             Student student2 = new Student { Id = 2, Name = "Oscar", LastName = "Perez", BirthDate = DateTime.Parse("10/10/2010"), Guid = Guid.NewGuid() };
             Student student3 = new Student { Id = 3, Name = "fasdfasdf", LastName = "fdsa", BirthDate = DateTime.Parse("10/10/2010"), Guid = Guid.NewGuid() };
@@ -52,7 +52,7 @@ namespace StudentManager.DataAccess.StoredProcedures.Tests
         [TestMethod()]
         public void CreateTest()
         {
-            StudentRepository repository = new StudentRepository();
+            StoredProceduresStudentRepository repository = new StoredProceduresStudentRepository();
             Student studentToAdd = new Student { Id = 6, Name = "added", LastName = "student", BirthDate = DateTime.Parse("10/10/2010"), Guid = Guid.NewGuid() };
             repository.Create(studentToAdd);
             var studentsList = repository.GetAll().ToList();
@@ -62,7 +62,7 @@ namespace StudentManager.DataAccess.StoredProcedures.Tests
         [TestMethod()]
         public void UpdateTest()
         {
-            StudentRepository repository = new StudentRepository();
+            StoredProceduresStudentRepository repository = new StoredProceduresStudentRepository();
             Student studentToUpdate = new Student { Id = 2, Name = "Updated", LastName = "Student", BirthDate = DateTime.Parse("10/10/2010") };
             repository.Update(studentToUpdate);
             var studentsList = repository.GetAll().ToList();
@@ -73,7 +73,7 @@ namespace StudentManager.DataAccess.StoredProcedures.Tests
         [TestMethod()]
         public void DeleteTest()
         {
-            StudentRepository repository = new StudentRepository();
+            StoredProceduresStudentRepository repository = new StoredProceduresStudentRepository();
             repository.DeleteById(5);
             var studentsList = repository.GetAll().ToList();
             var updatedStudent = studentsList.Find(x => x.Id == 2);
@@ -83,7 +83,7 @@ namespace StudentManager.DataAccess.StoredProcedures.Tests
         [TestMethod()]
         public void GetAllTest()
         {
-            StudentRepository repository = new StudentRepository();
+            StoredProceduresStudentRepository repository = new StoredProceduresStudentRepository();
             var studentsList = repository.GetAll().ToList();
             Assert.IsTrue(studentsList.Count() == 5);
         }
