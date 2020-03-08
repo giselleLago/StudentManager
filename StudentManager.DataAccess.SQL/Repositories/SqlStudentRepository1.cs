@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace StudentManager.DataAccess.SQL.Repositories
 {
-    public class StudentRepository : IStudentRepository
+    public class SqlStudentRepository : IStudentRepository
     {
         private readonly string connectionString = "Server=.;Database=StudentManager;User Id=sa;Password=yourStrong(!)Password;";
         public IEnumerable<Student> GetAll()
@@ -27,7 +27,7 @@ namespace StudentManager.DataAccess.SQL.Repositories
                                 Guid = Guid.Parse(reader["Guid"].ToString()),
                                 Name = reader["Name"].ToString(),
                                 LastName = reader["LastName"].ToString(),
-                                BirthDate = DateTime.Parse(reader["Birthday"].ToString())
+                                BirthDate = DateTime.Parse(reader["Birthdate"].ToString())
                             };
                             studentList.Add(student);
                         }
