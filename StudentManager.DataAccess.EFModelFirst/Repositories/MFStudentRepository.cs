@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace StudentManager.DataAccess.EFModelFirst.Repositories
 {
-    public class StudentRepository : IStudentRepository
+    public class MFStudentRepository : IStudentRepository
     {
         public IEnumerable<Student> GetAll()
         {

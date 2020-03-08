@@ -13,7 +13,7 @@ namespace StudentManager.DataAccess.SQL.Tests
         public void ShouldOpenConnection ()
         {
             var result = false;
-            var repository = new StudentRepository();
+            var repository = new SqlStudentRepository();
             var openConnection = repository.GetAll();
             if (openConnection != null)
             {
@@ -25,7 +25,7 @@ namespace StudentManager.DataAccess.SQL.Tests
         [TestMethod]
         public void GetAll_GivenThreeElementsFromDB_ShouldReturnAListWithThreeElements()
         {
-            var repository = new StudentRepository();
+            var repository = new SqlStudentRepository();
             var result = repository.GetAll().ToList();
             Assert.AreEqual(3, result.Count);
         }
@@ -41,7 +41,7 @@ namespace StudentManager.DataAccess.SQL.Tests
                 LastName = "Jimenez",
                 BirthDate = DateTime.Parse("31/07/1962")
             };
-            var repository = new StudentRepository();
+            var repository = new SqlStudentRepository();
             repository.Create(student);
             var result = repository.GetAll();
             Assert.AreEqual(4, result.Count());
@@ -58,7 +58,7 @@ namespace StudentManager.DataAccess.SQL.Tests
                 LastName = "Perez",
                 BirthDate = DateTime.Parse("31/07/1998")
             };
-            var repository = new StudentRepository();
+            var repository = new SqlStudentRepository();
             repository.Update(student);
             var result = repository.GetAll();
             Assert.AreEqual(3, result.Count());
@@ -67,7 +67,7 @@ namespace StudentManager.DataAccess.SQL.Tests
         [TestMethod]
         public void Delete_GivenFourElementsFromDB_ShouldReturnAListWithThreeElements()
         {
-            var repository = new StudentRepository();
+            var repository = new SqlStudentRepository();
             repository.DeleteById(4);
             var result = repository.GetAll();
             Assert.AreEqual(3, result.Count());

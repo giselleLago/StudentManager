@@ -2,11 +2,10 @@
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
 
 namespace StudentManager.DataAccess.SQL.Repositories
 {
-    public class StudentRepository : IStudentRepository
+    public class SqlStudentRepository : IStudentRepository
     {
         private readonly string connectionString = "Server=.;Database=StudentManager;User Id=sa;Password=yourStrong(!)Password;";
         public IEnumerable<Student> GetAll()
