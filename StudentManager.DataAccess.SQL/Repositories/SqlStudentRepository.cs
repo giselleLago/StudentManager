@@ -26,7 +26,7 @@ namespace StudentManager.DataAccess.SQL.Repositories
                                 Guid = Guid.Parse(reader["Guid"].ToString()),
                                 Name = reader["Name"].ToString(),
                                 LastName = reader["LastName"].ToString(),
-                                BirthDate = DateTime.Parse(reader["Birthdate"].ToString())
+                                BirthDate = DateTime.Parse(reader["Birthday"].ToString())
                             };
                             studentList.Add(student);
                         }
