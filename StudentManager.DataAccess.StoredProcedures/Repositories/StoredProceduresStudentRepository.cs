@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Linq;
 
 namespace StudentManager.DataAccess.StoredProcedures.Repositories
 {
@@ -69,7 +70,7 @@ namespace StudentManager.DataAccess.StoredProcedures.Repositories
             return entity;
         }
 
-        public void DeleteById(int id)
+        public Student DeleteById(int id)
         {
             using (var connection = new SqlConnection(connectionString))
             {
@@ -84,6 +85,8 @@ namespace StudentManager.DataAccess.StoredProcedures.Repositories
 
                 connection.Close();
             }
+            var student = GetAll();
+            return student.FirstOrDefault(x => x.Id == id);
         }
 
         private List<Student> ReadDatabase(SqlCommand command)
