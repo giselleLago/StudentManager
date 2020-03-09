@@ -60,10 +60,6 @@
       <Project>{5b20a3e7-52e5-4fd3-9cfa-89fe521e6298}</Project>
       <Name>StudentManager.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\StudentManager.DataAccess.Dapper\StudentManager.DataAccess.Dapper.csproj">
-      <Project>{ce2c50a6-1886-4150-a93a-82f07bfcf6fe}</Project>
-      <Name>StudentManager.DataAccess.Dapper</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
