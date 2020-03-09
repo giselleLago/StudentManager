@@ -36,12 +36,27 @@
     <Reference Include="Autofac, Version=5.1.2.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
       <HintPath>..\packages\Autofac.5.1.2\lib\net461\Autofac.dll</HintPath>
     </Reference>
+    <Reference Include="Elasticsearch.Net, Version=7.0.0.0, Culture=neutral, PublicKeyToken=96c599bbe3e70f5d, processorArchitecture=MSIL">
+      <HintPath>..\packages\Elasticsearch.Net.7.6.0\lib\net461\Elasticsearch.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.1.1.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
     </Reference>
+    <Reference Include="Nest, Version=7.0.0.0, Culture=neutral, PublicKeyToken=96c599bbe3e70f5d, processorArchitecture=MSIL">
+      <HintPath>..\packages\NEST.7.6.0\lib\net461\Nest.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.0\lib\netstandard2.0\System.Buffers.dll</HintPath>
+    </Reference>
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.3.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.5.1\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
     <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.2\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
@@ -67,18 +82,6 @@
     <ProjectReference Include="..\StudentManager.Common\StudentManager.Common.csproj">
       <Project>{5b20a3e7-52e5-4fd3-9cfa-89fe521e6298}</Project>
       <Name>StudentManager.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\StudentManager.DataAccess.Dapper\StudentManager.DataAccess.Dapper.csproj">
-      <Project>{ce2c50a6-1886-4150-a93a-82f07bfcf6fe}</Project>
-      <Name>StudentManager.DataAccess.Dapper</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\StudentManager.DataAccess.EFCodeFirst\StudentManager.DataAccess.EFCodeFirst.csproj">
-      <Project>{f8347874-6cc4-49db-927b-7ee55a0bc57f}</Project>
-      <Name>StudentManager.DataAccess.EFCodeFirst</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\StudentManager.DataAccess.EFModelFirst\StudentManager.DataAccess.EFModelFirst.csproj">
-      <Project>{fcee1c61-cdb5-41b9-bf37-0270185a77b7}</Project>
-      <Name>StudentManager.DataAccess.EFModelFirst</Name>
     </ProjectReference>
     <ProjectReference Include="..\StudentManager.DataAccess.SQL\StudentManager.DataAccess.SQL.csproj">
       <Project>{5cf7640d-711c-43e3-84f8-a416e2dd305f}</Project>

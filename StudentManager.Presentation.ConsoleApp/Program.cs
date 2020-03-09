@@ -2,9 +2,6 @@
 using System.Collections.Generic;
 using Autofac;
 using StudentManager.Common.Aggregates.StudentAggregate;
-using StudentManager.DataAccess.Dapper.Repositories;
-using StudentManager.DataAccess.EFCodeFirst.Repositories;
-using StudentManager.DataAccess.EFModelFirst.Repositories;
 using StudentManager.DataAccess.SQL.Repositories;
 using StudentManager.DataAccess.StoredProcedures.Repositories;
 
@@ -54,15 +51,6 @@ namespace StudentManager.Presentation.ConsoleApp
                 case 2:
                     builder.RegisterType<StoredProceduresStudentRepository>().As<IStudentRepository>();
                     break;
-                case 3:
-                    builder.RegisterType<MFStudentRepository>().As<IStudentRepository>();
-                    break;
-                case 4:
-                    builder.RegisterType<CFStudentRepository>().As<IStudentRepository>();
-                    break;
-                case 5:
-                    builder.RegisterType<DapperStudentRepository>().As<IStudentRepository>();
-                    break;
                 default:
                     Environment.Exit(0);
                     break;
@@ -72,11 +60,11 @@ namespace StudentManager.Presentation.ConsoleApp
 
         private static int GetConnectionType()
         {
-            Console.WriteLine("Choose the type of connection: \n (1)  SQL Server \n (2)  Stored Procedures \n (3)  Entity Framework Model First \n (4)  Entity Framework Code First \n (5)  Dapper \n (6)  Exit");
+            Console.WriteLine("Choose the type of connection: \n (1)  SQL Server \n (2)  Stored Procedures \n (3)  Exit");
             var connectionType = int.Parse(Console.ReadLine());
-            while (connectionType != 1 && connectionType != 2 && connectionType != 3 && connectionType != 4 && connectionType != 5 && connectionType != 6)
+            while (connectionType != 1 && connectionType != 2 && connectionType != 3)
             {
-                Console.WriteLine("Incorrect operation, please choose again: \n (1)  SQL Server \n (2)  Stored Procedures \n (3)  Entity Framework Model First \n (4)  Entity Framework Code First \n (5)  Dapper \n (6)  Exit");
+                Console.WriteLine("Incorrect operation, please choose again: \n (1)  SQL Server \n (2)  Stored Procedures \n (3)  Exit");
                 connectionType = int.Parse(Console.ReadLine());
             }
             return connectionType;
@@ -105,8 +93,6 @@ namespace StudentManager.Presentation.ConsoleApp
 
         private static void AddStudent()
         {
-            Console.WriteLine("Id: ");
-            var studentId = int.Parse(Console.ReadLine());
             Console.WriteLine("Name: ");
             var studentName = Console.ReadLine();
             Console.WriteLine("Last Name: ");
@@ -116,7 +102,6 @@ namespace StudentManager.Presentation.ConsoleApp
 
             var student = new Student
             {
-                Id = studentId,
                 Name = studentName,
                 LastName = studentLastName,
                 BirthDate = studentBirthdate
