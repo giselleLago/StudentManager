@@ -7,6 +7,6 @@ namespace StudentManager.Common.Seedwork
         IEnumerable<T> GetAll();
         T Create(T entity);
         T Update(T entity);
-        void DeleteById(int id);
+        T DeleteById(int id);
     }
 }
