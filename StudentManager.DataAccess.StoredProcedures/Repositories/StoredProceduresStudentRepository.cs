@@ -1,8 +1,10 @@
-﻿using StudentManager.Common.Aggregates.StudentAggregate;
+﻿using log4net;
+using StudentManager.Common.Aggregates.StudentAggregate;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 
 namespace StudentManager.DataAccess.StoredProcedures.Repositories
@@ -10,41 +12,87 @@ namespace StudentManager.DataAccess.StoredProcedures.Repositories
     public class StoredProceduresStudentRepository : IStudentRepository
     {
         private readonly string connectionString = "Server=.;Database=StudentManager;User Id=sa;Password=yourStrong(!)Password;";
+        private static readonly ILog logger = LogManager.GetLogger(typeof(StoredProceduresStudentRepository));
         public IEnumerable<Student> GetAll()
         {
+            List<Student> studentsList = null;
             using (var connection = new SqlConnection(connectionString))
             {
-                string procedure = @"dbo.[GetAllStudents]";
-                SqlCommand command = new SqlCommand(procedure, connection);
-                command.CommandType = CommandType.StoredProcedure;
+                try
+                {
+                    string procedure = @"dbo.[GetAllStudents]";
+                    SqlCommand command = new SqlCommand(procedure, connection)
+                    {
+                        CommandType = CommandType.StoredProcedure
+                    };
 
-                connection.Open();
-                var studentsList = ReadDatabase(command);
-
-                connection.Close();
-
-                return studentsList;
-
+                    connection.Open();
+                    studentsList = ReadDatabase(command);
+                }
+                catch (InvalidOperationException e)
+                {
+                    logger.Error(e);
+                    throw;
+                }
+                catch (ArgumentException e)
+                {
+                    logger.Error(e);
+                    throw;
+                }
+                catch (SqlException e)
+                {
+                    logger.Error(e);
+                    throw;
+                }
             }
+            return studentsList;
         }
+
 
         public Student Create(Student entity)
         {
             using (var connection = new SqlConnection(connectionString))
             {
-                string procedure = @"dbo.[AddStudent]";
-                SqlCommand command = new SqlCommand(procedure, connection);
-                command.Parameters.AddWithValue("@student_name", entity.Name);
-                command.Parameters.AddWithValue("@student_surname", entity.LastName);
-                command.Parameters.AddWithValue("@student_birth_date", entity.BirthDate);
-                command.Parameters.AddWithValue("@student_guid", entity.Guid);
-                command.CommandType = CommandType.StoredProcedure;
+                try
+                {
+                    string procedure = @"dbo.[AddStudent]";
+                    SqlCommand command = new SqlCommand(procedure, connection);
+                    command.Parameters.AddWithValue("@student_name", entity.Name);
+                    command.Parameters.AddWithValue("@student_surname", entity.LastName);
+                    command.Parameters.AddWithValue("@student_birth_date", entity.BirthDate);
+                    command.Parameters.AddWithValue("@student_guid", entity.Guid);
+                    command.CommandType = CommandType.StoredProcedure;
 
-                connection.Open();
+                    connection.Open();
 
-                command.ExecuteNonQuery();
+                    command.ExecuteNonQuery();
 
-                connection.Close();
+                }
+                catch (InvalidCastException e)
+                {
+                    logger.Error(e);
+                    throw;
+                }
+                catch (ArgumentException e)
+                {
+                    logger.Error(e);
+                    throw;
+                }
+                catch (InvalidOperationException e)
+                {
+                    logger.Error(e);
+                    throw;
+                }
+                catch (SqlException e)
+                {
+                    logger.Error(e);
+                    throw;
+                }
+                catch (IOException e)
+                {
+                    logger.Error(e);
+                    throw;
+                }
             }
             return entity;
         }
@@ -53,19 +101,45 @@ namespace StudentManager.DataAccess.StoredProcedures.Repositories
         {
             using (var connection = new SqlConnection(connectionString))
             {
-                string procedure = @"dbo.[UpdateStudent]";
-                SqlCommand command = new SqlCommand(procedure, connection);
-                command.Parameters.AddWithValue("@id", entity.Id);
-                command.Parameters.AddWithValue("@student_name", entity.Name);
-                command.Parameters.AddWithValue("@student_surname", entity.LastName);
-                command.Parameters.AddWithValue("@student_birth_date", entity.BirthDate);
-                command.CommandType = CommandType.StoredProcedure;
+                try
+                {
+                    string procedure = @"dbo.[UpdateStudent]";
+                    SqlCommand command = new SqlCommand(procedure, connection);
+                    command.Parameters.AddWithValue("@id", entity.Id);
+                    command.Parameters.AddWithValue("@student_name", entity.Name);
+                    command.Parameters.AddWithValue("@student_surname", entity.LastName);
+                    command.Parameters.AddWithValue("@student_birth_date", entity.BirthDate);
+                    command.CommandType = CommandType.StoredProcedure;
 
-                connection.Open();
+                    connection.Open();
 
-                command.ExecuteNonQuery();
-
-                connection.Close();
+                    command.ExecuteNonQuery();
+                }
+                catch (InvalidCastException e)
+                {
+                    logger.Error(e);
+                    throw;
+                }
+                catch (ArgumentException e)
+                {
+                    logger.Error(e);
+                    throw;
+                }
+                catch (InvalidOperationException e)
+                {
+                    logger.Error(e);
+                    throw;
+                }
+                catch (SqlException e)
+                {
+                    logger.Error(e);
+                    throw;
+                }
+                catch (IOException e)
+                {
+                    logger.Error(e);
+                    throw;
+                }
             }
             return entity;
         }
@@ -76,49 +150,107 @@ namespace StudentManager.DataAccess.StoredProcedures.Repositories
             {
                 string procedure = @"dbo.[DeleteStudent]";
                 SqlCommand command = new SqlCommand(procedure, connection);
-                command.Parameters.AddWithValue("@id", id);
-                command.CommandType = CommandType.StoredProcedure;
+                try
+                {
+                    connection.Open();
 
-                connection.Open();
-
-                command.ExecuteNonQuery();
-
-                connection.Close();
+                    command.Parameters.AddWithValue("@id", id);
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.ExecuteNonQuery();
+                }
+                catch (InvalidCastException e)
+                {
+                    logger.Error(e);
+                    throw;
+                }
+                catch (ArgumentException e)
+                {
+                    logger.Error(e);
+                    throw;
+                }
+                catch (InvalidOperationException e)
+                {
+                    logger.Error(e);
+                    throw;
+                }
+                catch (SqlException e)
+                {
+                    logger.Error(e);
+                    throw;
+                }
+                catch (IOException e)
+                {
+                    logger.Error(e);
+                    throw;
+                }
             }
-            var student = GetAll();
-            return student.FirstOrDefault(x => x.Id == id);
+            var studentsList = GetAll();
+            
+            return studentsList.FirstOrDefault(x => x.Id == id);
         }
 
-        private List<Student> ReadDatabase(SqlCommand command)
+        public List<Student> ReadDatabase(SqlCommand command)
         {
-            var reader = command.ExecuteReader();
             var studentsList = new List<Student>();
-            if (reader.HasRows)
+            try
             {
-                studentsList = ReadStudents(reader);
+                using (var reader = command.ExecuteReader())
+                {
+                    if (reader.HasRows)
+                    {
+                        studentsList = ReadStudents(reader);
+                    }
+                    else
+                    {
+                        Console.WriteLine("No data found.");
+                    }
+                }
             }
-            else
+            catch (InvalidCastException e)
             {
-                Console.WriteLine("No data found.");
+                logger.Error(e);
+                throw;
             }
-            reader.Close();
+            catch (InvalidOperationException e)
+            {
+                logger.Error(e);
+                throw;
+            }
+            catch (SqlException e)
+            {
+                logger.Error(e);
+                throw;
+            }
+            catch (IOException e)
+            {
+                logger.Error(e);
+                throw;
+            }
             return studentsList;
         }
 
         private List<Student> ReadStudents(SqlDataReader reader)
         {
             var studentsList = new List<Student>();
-            while (reader.Read())
+            try
             {
-                var student = new Student
+                while (reader.Read())
                 {
-                    Id = reader.GetInt32(0),
-                    Name = reader.GetString(1),
-                    LastName = reader.GetString(2),
-                    BirthDate = reader.GetDateTime(3),
-                    Guid = reader.GetGuid(4)
-                };
-                studentsList.Add(student);
+                    var student = new Student
+                    {
+                        Id = reader.GetInt32(0),
+                        Name = reader.GetString(1),
+                        LastName = reader.GetString(2),
+                        BirthDate = reader.GetDateTime(3),
+                        Guid = reader.GetGuid(4)
+                    };
+                    studentsList.Add(student);
+                }
+            }
+            catch (SqlException e)
+            {
+                logger.Error(e);
+                throw;
             }
             return studentsList;
         }
