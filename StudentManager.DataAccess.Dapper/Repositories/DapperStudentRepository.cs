@@ -21,7 +21,7 @@ namespace StudentManager.DataAccess.Dapper.Repositories
             throw new NotImplementedException();
         }
 
-        public void DeleteById(int id)
+        public Student DeleteById(int id)
         {
             throw new NotImplementedException();
         }

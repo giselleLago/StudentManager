@@ -60,10 +60,6 @@
       <Project>{5b20a3e7-52e5-4fd3-9cfa-89fe521e6298}</Project>
       <Name>StudentManager.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\StudentManager.DataAccess.EFModelFirst\StudentManager.DataAccess.EFModelFirst.csproj">
-      <Project>{fcee1c61-cdb5-41b9-bf37-0270185a77b7}</Project>
-      <Name>StudentManager.DataAccess.EFModelFirst</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

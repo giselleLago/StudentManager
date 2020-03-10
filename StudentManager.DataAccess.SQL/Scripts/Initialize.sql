@@ -17,7 +17,7 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 CREATE TABLE [dbo].[Student](
-	[Id] [int] NOT NULL,
+	[Id] [int] IDENTITY(1,1) NOT NULL,
 	[Guid] [uniqueidentifier] NOT NULL,
 	[Name] [varchar](50) NOT NULL,
 	[LastName] [varchar](50) NOT NULL,
