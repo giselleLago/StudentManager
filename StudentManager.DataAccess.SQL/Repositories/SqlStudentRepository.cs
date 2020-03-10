@@ -114,11 +114,12 @@ namespace StudentManager.DataAccess.SQL.Repositories
             {
                 var student = new Student
                 {
-                    Id = int.Parse(reader["Id"].ToString()),
-                    Guid = Guid.Parse(reader["Guid"].ToString()),
-                    Name = reader["Name"].ToString(),
-                    LastName = reader["LastName"].ToString(),
-                    BirthDate = DateTime.Parse(reader["Birthday"].ToString())
+                    Id = reader.GetInt32(0),
+                    Guid = reader.GetGuid(1),
+                    Name = reader.GetString(2),
+                    LastName = reader.GetString(3),
+                    BirthDate = reader.GetDateTime(4)
+                    
                 };
                 studentList.Add(student);
             }
